@@ -20,6 +20,7 @@ describe('User', () => {
   })
 
 
+
   it("has a name", () => {
     expect(user).toHaveProperty("username")
   })
