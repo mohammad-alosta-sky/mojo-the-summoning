@@ -1,5 +1,5 @@
 // add your database connection here
-const {Sequelize, Module, DataTypes} = require("sequelize");
+const {Sequelize, DataTypes} = require("sequelize");
 const path = require("path");
 
 const db = new Sequelize({
