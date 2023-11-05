@@ -158,6 +158,36 @@ describe("Eager loading", () =>{
             xp: 1500
         })
         const addedUsed = await User.findByPk(1, {include: Deck})
-        expect(addedUsed.deck.name).toEqual("Golden deck")
+        expect(addedUsed.Deck.name).toEqual("Golden deck")
+    })
+
+    it("A deck can be loaded with it's cards", async () => {
+        deck = await Deck.create({
+            name: "Golden deck",
+            xp: 1500
+        })
+
+        await deck.createCard({
+            name: "Wizard",
+            mojo: 100,
+            stamina: 10,
+            imgUrl: "wizardImg"
+        })
+        await deck.createCard({
+            name: "Warrior",
+            mojo: 100,
+            stamina: 10,
+            imgUrl: "warriorImg"
+        })
+
+        await deck.createCard({
+        
+            name: "Dragon",
+            mojo: 100,
+            stamina: 10,
+            imgUrl: "dragonImg"
+        })
+        const addedDeck = await Deck.findByPk(1, {include: Card})
+        expect(await addedDeck).toHaveProperty("Cards")
     })
 })
